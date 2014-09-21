@@ -1,0 +1,43 @@
+{
+  "name": "satelize",
+  "description": "Get location details (latitude, longitude...) from IP visitor, server side NodeJS module",
+  "version": "0.0.9",
+  "author": {
+    "name": "Julien Valéry",
+    "email": "darul75@gmail.com"
+  },
+  "homepage": "https://github.com/darul75/satelize",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/darul75/satelize.git"
+  },
+  "keywords": [
+    "ip",
+    "location",
+    "geolocation",
+    "address",
+    "nodejs",
+    "telize"
+  ],
+  "main": "./lib/satelize",
+  "scripts": {
+    "test": "mocha test/*.js"
+  },
+  "engines": {
+    "node": ">=0.6.x"
+  },
+  "devDependencies": {
+    "mocha": "",
+    "grunt": "latest",
+    "grunt-contrib-jshint": "latest",
+    "grunt-contrib-uglify": "latest"
+  },
+  "bugs": {
+    "url": "https://github.com/darul75/satelize/issues"
+  },
+  "readmeFilename": "README.md",
+  "license": "MIT",
+  "dependencies": {
+    "line-reader": "^0.2.4"
+  }
+}
