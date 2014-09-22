@@ -31,5 +31,5 @@ var ISO_3166_MAPPING = {
 };                  
 
 define('DIC_FILE', 'nam_dict.txt');
-define('COUNTRIES', 'nam_dict.txt');
-define('COUNTRIES_ISO', ISO_3166_MAPPING);
+define('COUNTRIES', COUNTRIES);
+define('ISO_3166_MAPPING', ISO_3166_MAPPING);

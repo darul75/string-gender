@@ -11,8 +11,8 @@
   var constants = require('./constants');
 
   var mg = {
-    settings: {
-      test: 5        
+    settings: {      
+      unknown: null        
     },
     dicos: {}
   };
@@ -33,8 +33,29 @@
     
   //// exported mg module functions ////
 
-  mg.mail = function (arr, cb) {
-    cb = cb || function () {};
+  mg.getGender = function (params, cb) {
+    if (!params.string)
+      return;    
+
+    var name = params.string.toLowerCase();
+
+    var result = {};
+
+    var idx = constants.COUNTRIES.indexOf(params.country);
+
+    var found = this.dicos[name];
+
+
+    if (country) {
+      
+
+    }
+    else {
+
+
+    }
+
+    /*cb = cb || function () {};
     if (!arr.length) {
         return callback();
     }
@@ -53,41 +74,40 @@
               callback();
           }
       }
-    }
+    }*/
+  };
+
+  mg.nameExists = function(name) {        
+    return this.dicos.hasOwnProperty(name);
   };  
 
-  var _process = function (word) {
-
-  return '';
-  } 
-
-  var _readDico = function (cb) {
-    console.log(constants.DIC_FILE);
+  var _readDico = function (cb) {    
     lineReader.eachLine(constants.DIC_FILE, function(line, last) {
-      _processLine.apply(null, arguments);
+      _digestLine.apply(null, arguments);
+    }).then(function () {
+      mg.nameExists('Julien');
+      mg.getGender({string: 'Julien'});
     });
   };  
 
-  var _processLine = function(line, last) {
+  var _digestLine = function(line, last) {
     if (line.startsWith('#'))
       return;    
 
-    var parts = line.split(' ').filter(''.isNotEmpty);    
+    var parts = line.split(' ').filter(''.isNotEmpty);
+    var name = parts[1].toLowerCase();
 
-    mg.dicos[parts[1]] = {
+    mg.dicos[name] = {
+      name: name,
       gender: parts[0],
       countries: line.slice(30, line.length)
     };
         
-  }
+  };
 
   _readDico(function() {
-
-  });
-
-  // async.filter = doParallel(_filter);
-  // async.filterSeries = doSeries(_filter);
-  // select alias    
+    name_exists
+  });    
 
   module.exports = mg;    
 
