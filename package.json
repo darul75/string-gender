@@ -1,25 +1,24 @@
 {
-  "name": "satelize",
-  "description": "Get location details (latitude, longitude...) from IP visitor, server side NodeJS module",
-  "version": "0.0.9",
+  "name": "string gender",
+  "description": "Get gender from (first) name in nodeJS.",
+  "version": "0.0.1",
   "author": {
     "name": "Julien Valéry",
     "email": "darul75@gmail.com"
   },
-  "homepage": "https://github.com/darul75/satelize",
+  "homepage": "https://github.com/darul75/string-gender",
   "repository": {
     "type": "git",
-    "url": "https://github.com/darul75/satelize.git"
+    "url": "https://github.com/darul75/string-gender.git"
   },
   "keywords": [
-    "ip",
-    "location",
-    "geolocation",
-    "address",
-    "nodejs",
-    "telize"
+    "string",
+    "gender",
+    "index",
+    "util",
+    "nodejs"    
   ],
-  "main": "./lib/satelize",
+  "main": "./lib/sg",
   "scripts": {
     "test": "mocha test/*.js"
   },
@@ -33,7 +32,7 @@
     "grunt-contrib-uglify": "latest"
   },
   "bugs": {
-    "url": "https://github.com/darul75/satelize/issues"
+    "url": "https://github.com/darul75/string-gender/issues"
   },
   "readmeFilename": "README.md",
   "license": "MIT",
