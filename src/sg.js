@@ -16,6 +16,7 @@ function StringGender() {
     unknown: null        
   };  
   this.dicosIdx = new Index();
+  this.dicos = {};
 }
 
 // http://stackoverflow.com/questions/646628/how-to-check-if-a-string-startswith-another-string
@@ -96,7 +97,7 @@ var _readDico = function (cb) {
       console.log(doc);
     });*/
 
-    sg.getGender({string: 'julien ddd'}, function(doc) {
+    sg.getGender({string: 'julien'}, function(doc) {
       console.log(doc);
     });
 
@@ -114,11 +115,19 @@ var _digestLine = function(line, last) {
   var name = parts[1].toLowerCase();
   var key = parts[0] + ' ' + name;
 
-  this.dicosIdx.addDocument(key, {
+  var doc = {
     name: name,
     gender: parts[0],
     countries: line.slice(30, line.length)
-  });
+  }
+
+  this.dicosIdx.addDocument(key, doc);
+
+  if (this.dicos[name]) {
+    console.log(name);
+  }  
+
+  this.dicos[name] = doc;
       
 };
 
