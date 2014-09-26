@@ -1,21 +1,15 @@
 // test/main.js
-var satelize = require('../src/satelize');
+var sg = require('../src/sg');
 var assert = require("assert");
 
-describe('service calls', function() {
-    describe('with ip arguments', function() {
-        it('return Netherlands nice country', function(done) {
-            satelize.satelize({JSONP: false, ip:'46.19.37.108'}, function(err, geoData) {
-                if (err) console.log(err);
-                
-                var d = JSON.parse(geoData);
-                console.log(d);
+describe('search firstname', function() {
+    this.timeout(50000);
 
-                assert.equal(d.country, 'Netherlands');
-                assert.notEqual(d.country, 'France');
-
-                done();
-            });
+    describe('easy search', function() {
+        it('julien', function(done) {
+           sg.getGender({string: 'julien'}, function(doc) {
+              console.log(doc);
+           });
         });
     });
 });

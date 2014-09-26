@@ -16,7 +16,7 @@ function StringGender() {
     unknown: null        
   };  
   this.dicosIdx = new Index();
-  this.dicos = {};
+  this.dicos = {};  
 }
 
 // http://stackoverflow.com/questions/646628/how-to-check-if-a-string-startswith-another-string
@@ -35,6 +35,15 @@ if (typeof String.prototype.isNotEmpty != 'function') {
       
 
 StringGender.prototype.getGender = function (params, cb) {
+  var args = arguments;  
+  if (!sg.ready) {
+    _readDico(function() {
+      StringGender.prototype.getGender.apply(sg, args);
+      return;
+    });
+    return;
+  }      
+
   if (!params.string)
     return;
 
@@ -78,32 +87,8 @@ var _readDico = function (cb) {
   lineReader.eachLine(constants.DIC_FILE, function(line, last) {
     _digestLine.apply(sg, arguments);
   }).then(function () {
-
     sg.ready = true;
-    
-    /*sg.getGender({string: 'Aafke', country:'the_netherlands'}, function(doc) {
-      console.log(doc);
-    });*/
-
-    /*sg.getGender({string: 'Abdul Kareem'}, function(doc) {
-      console.log(doc);
-    });*/
-
-    /*sg.getGender({string: 'Abel'}, function(doc) {
-      console.log(doc);
-    });
-
-    sg.getGender({string: 'Ábel'}, function(doc) {
-      console.log(doc);
-    });*/
-
-    sg.getGender({string: 'julien'}, function(doc) {
-      console.log(doc);
-    });
-
-    
-    //sg.getGender({string: 'Mateušas'});
-    
+    cb();
   });
 };
 
@@ -136,7 +121,3 @@ var _digestLine = function(line, last) {
 */
 var sg = new StringGender();
 module.exports = sg;
-
-_readDico(function() {
-  name_exists
-});
