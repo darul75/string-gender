@@ -1,5 +1,5 @@
 {
-  "name": "string gender",
+  "name": "string-gender",
   "description": "Get gender from (first) name in nodeJS.",
   "version": "0.0.1",
   "author": {
