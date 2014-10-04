@@ -1,11 +1,10 @@
 # StringGender [![NPM version](https://badge.fury.io/js/string-gender.png)](http://badge.fury.io/js/string-gender) [![Build Status](https://travis-ci.org/darul75/string-gender.png?branch=master)](https://travis-ci.org/darul75/string-gender)
 
-**StringGender** is a small implementation for NodeJS to retrieve gender from firstname or email address or...
+**StringGender** nodejs library to find out the sex of a string or an email.
 
 ## Why ?
 
-For instance, in an emailing campaign, it was useful to get the gender of the participating people.
-StringGender is not perfect but can give an overview.
+For instance, in an emailing campaign, it was useful to get an overview of gender from participating people.
 
 ## Demo
 
