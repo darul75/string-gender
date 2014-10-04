@@ -28,7 +28,11 @@ var ISO_3166_MAPPING = {
       'SA' : 'arabia', 'SE' : 'sweden', 'SI' : 'slovenia', 'SK' : 'slovakia',
       'TR' : 'turkey', 'TW' : 'china', 'UA' : 'ukraine', 'US' : 'usa',
       'UZ' : 'the_stans', 'VN' : 'vietnam'
-};                  
+};       
+
+var most = "/^[a-z ,.'-]+$/i";
+
+var international = "/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u";           
 
 define('DIC_FILE', 'nam_dict.txt');
 define('COUNTRIES', COUNTRIES);

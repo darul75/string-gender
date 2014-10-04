@@ -18,23 +18,10 @@ function StringGender() {
   this.dicosIdx = new Indexer();
   this.dicos = {};  
 }
-
-if (typeof String.prototype.startsWith != 'function') {
-  // see below for better implementation!
-  String.prototype.startsWith = function (str){
-    return this.indexOf(str) == 0;
-  };
-}
-
-if (typeof String.prototype.isNotEmpty != 'function') {
-  String.prototype.isNotEmpty = function(element) {
-    return element.trim() != '';
-  };
-}
       
-
 StringGender.prototype.getGenderByIndex = function (params, cb) {
   var args = arguments;  
+  var email = false;
   if (!sg.ready) {
     _readDico(function() {      
       StringGender.prototype.getGenderByIndex.apply(sg, args);      
@@ -46,15 +33,29 @@ StringGender.prototype.getGenderByIndex = function (params, cb) {
   if (!params.string)
     return;
 
+  email = params.email;
+
   var name = params.string.toLowerCase();
+
+  if (email) {
+    var pattern = params.email_pattern || /^([^\._@]+)[_.]([^@]*)/;
+    var names = params.string.match(pattern);
+    var name2;
+    if (names && names.length === 3) {
+      name = names[1];
+      name2 = names[2];
+    }
+
+  }
 
   var result = {};
 
   var idx = constants.COUNTRIES.indexOf(params.country) || constants.ISO_3166_MAPPING.indexOf(params.country);
 
-  var results = this.dicosIdx.query(name);  
-
-  console.log(results);
+  var results = this.dicosIdx.query(name); 
+  if (email && (!results || results.length === 0)) {
+    results = this.dicosIdx.query(name2); 
+  }
 
   // case : search for country 
   if (idx >= 0) {
@@ -97,17 +98,14 @@ var _digestLine = function(line, last) {
 
   var parts = line.split(' ').filter(''.isNotEmpty);
   var name = parts[1].toLowerCase();
-  var key = parts[0] + ' ' + name;
-
-  if (name === 'dimče')  
-    console.log('');
+  var key = parts[0] + ' ' + name;    
 
   var doc = {
     name: name.match("([^#]+)")[0],
     id: name,
     gender: parts[0],
     countries: line.slice(30, line.length)
-  }
+  }  
 
   // indexer
   this.dicosIdx.addDocument(key, doc);  
@@ -142,6 +140,23 @@ var _onlyOnce = function(fn) {
 
 var _isArray = function(object) {
   return Object.prototype.toString.call( object ) === '[object Array]';
+}
+
+/**
+* Utils
+*/
+
+if (typeof String.prototype.startsWith != 'function') {
+  // see below for better implementation!
+  String.prototype.startsWith = function (str){
+    return this.indexOf(str) == 0;
+  };
+}
+
+if (typeof String.prototype.isNotEmpty != 'function') {
+  String.prototype.isNotEmpty = function(element) {
+    return element.trim() != '';
+  };
 }
 
 /**

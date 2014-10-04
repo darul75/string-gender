@@ -22,7 +22,7 @@ THE SOFTWARE.
 
 var _ = require("underscore")._,
     Tokenizer = require('../node_modules/natural/lib/natural/tokenizers/regexp_tokenizer.js').RegexpTokenizer,
-    tokenizer = new Tokenizer(),
+    tokenizer = new Tokenizer({pattern: /(\s)+/}),
     stopwords = require('../node_modules/natural/lib/natural/util/stopwords.js').words,
     fs = require('fs');
 
@@ -31,7 +31,7 @@ function buildDocument(text, key) {
     
     if(typeof text === 'string') {
         text = tokenizer.tokenize(text.toLowerCase());
-        stopOut = true;
+        stopOut = true;        
     } else if(!_.isArray(text)) {
         return text;
         stopOut = false;

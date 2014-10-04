@@ -3,7 +3,7 @@ var sg = require('../src/index.js');
 var assert = require("assert");
 
 describe('search firstname', function() {
-    this.timeout(50000);
+    this.timeout(40000);
 
     describe('easy search with index', function() {
         it('Julien', function(done) {
@@ -13,6 +13,23 @@ describe('search firstname', function() {
               done();
            });
         });
+
+        it('Jean-Paul', function(done) {
+           sg.getGenderByIndex({string: 'Jean-Paul'}, function(results) {
+              assert.equal(results[0].doc.name, 'jean-paul');
+
+              done();
+           });
+        });
+
+        it('Ai Fen', function(done) {
+           sg.getGenderByIndex({string: 'Jean-Paul'}, function(results) {
+              assert.equal(results[0].doc.name, 'jean-paul');
+
+              done();
+           });
+        });      
+        
     });
 
 
@@ -27,6 +44,40 @@ describe('search firstname', function() {
         it('Dimče', function(done) {
            sg.getGenderByIndex({string: 'Dimče'}, function(results) {
               assert.equal(results.length, 2);
+
+              done();
+           });
+        });
+
+    });
+
+    describe('email search', function() {
+        it('julien.valery@com.com', function(done) {
+           sg.getGenderByIndex({string: 'julien.valery@com.com', email:true}, function(results) {              
+              assert.equal(results.length, 1);
+
+              done();
+           });
+        });
+        it('julien.norris@com.com', function(done) {
+           sg.getGenderByIndex({string: 'julien.norris@com.com', email:true}, function(results) {              
+              assert.equal(results.length, 1);
+
+              done();
+           });
+        });
+
+       it('norris.julien@com.com', function(done) {
+           sg.getGenderByIndex({string: 'norris.julien@com.com', email:true}, function(results) {              
+              assert.equal(results.length, 1);
+
+              done();
+           });
+        });
+
+       it('jean-paul.dedieu@com.com', function(done) {
+           sg.getGenderByIndex({string: 'jean-paul.dedieu@com.com', email:true}, function(results) {              
+              assert.equal(results.length, 1);
 
               done();
            });
