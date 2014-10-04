@@ -1,110 +1,64 @@
-# Satelize [![NPM version](https://badge.fury.io/js/satelize.png)](http://badge.fury.io/js/satelize) [![Build Status](https://travis-ci.org/darul75/satelize.png?branch=master)](https://travis-ci.org/darul75/satelize)
+# StringGender [![NPM version](https://badge.fury.io/js/string-gender.png)](http://badge.fury.io/js/string-gender) [![Build Status](https://travis-ci.org/darul75/string-gender.png?branch=master)](https://travis-ci.org/darul75/string-gender)
 
-**Satelize** is a small implementation for NodeJS to retrieve user location information based on IP, combined with expressjs for instance make life easier to get some stuff as latitude/longitude of your visitor.
-
-Inspired and using http://www.telize.com/ service. Free today.
-
-You will find informations there too.
+**StringGender** is a small implementation for NodeJS to retrieve gender from firstname or email address or...
 
 ## Why ?
 
-Because ecchymose in the nose. I needed something but on server side.
-
-With expressjs for instance, you can get your request IP, then just need to use this library that will make the call to get user location data.
-
-And it is done.
+For instance, in an emailing campaign, it was useful to get the gender of the participating people.
+StringGender is not perfect but can give an overview.
 
 ## Demo
 
-http://darul-demo.herokuapp.com/satelize
+TODO http://darul-demo.herokuapp.com/string-gender
 
 ## Install
 
 ~~~
-npm install satelize
+TODO npm install string-gender
 ~~~
 
 ## Usage
 
 ```javascript
-var satelize = require('satelize');
+var sg = require('sg');
 
 // Example retrieve IP from request
-// var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
 
-// then satelize call 
+sg.getGenderByIndex({string: 'Jean-Paul'}, function(results) {
 
-satelize.satelize({ip:'46.19.37.108'}, function(err, geoData) {
-  // process err
-  
-  // if data is JSON, we may wrap it in js object
-  var obj = JSON.parse(geoData);
-  
-  
-  // if used with expressjs
-  // res.send(geoData);
-  // res.json...
-});
-    
-    
-// MORE EXAMPLES
+  /*
+  Array[1]
+  0: Object
+    doc: Object
+      countries: "       7651   4                                         $"
+      gender: "M"
+      id: "julien"
+      name: "julien"
+    key: "M julien"
+    measure: 22.965674645305885
+  */
 
-satelize.satelize({ip:'46.19.37.108'}, function(err, geoData) {
-}); // json output for this ip
+}
 
-satelize.satelize({ip:'46.19.37.108', JSONP: true}, function(err, geoData) {
-}); // jsonp output for this ip
-
-satelize.satelize({}, function(err, geoData) {
-}); // json output request ip, meaning server
-
-satelize.satelize({JSONP: true}, function(err, geoData) {
-}); // jsonp output request ip
 ```    
     
 ## Return    
 
 ~~~ json
 {
-    "ip": "46.19.37.108",
-    "country_code": "NL",
-    "country_code3": "NLD",
-    "country": "Netherlands",
-    "continent_code": "EU",
-    "latitude": 52.5,
-    "longitude": 5.75,
-    "dma_code": "0",
-    "area_code": "0",
-    "asn": "AS196752",
-    "isp": "Tilaa V.O.F.",
-    "timezone":"Europe/Amsterdam"
+    
 }
 ~~~
 
 Details
 
 - **ip** (Visitor IP address, or IP address specified as parameter)
-- **country_code** (Two-letter ISO 3166-1 alpha-2 country code)
-- **country_code3** (Three-letter ISO 3166-1 alpha-3 country code)
-- **country** (Name of the country)
-- **region_code** (Two-letter ISO-3166-2 state / region code)
-- **region** (Name of the region)
-- **city** (Name of the city)
-- **postal_code** (Postal code / Zip code)
-- **continent_code** (Two-letter continent code)
-- **latitude** (Latitude)
-- **longitude** (Longitude)
-- **dma_code** (DMA Code)
-- **area_code** (Area Code)
-- **asn** (Autonomous System Number)
-- **isp** (Internet service provider)
-- **timezone** (Time Zone)
 
 
 ## Options
 
 - **ip** : if not set, give request ip.
-- **JSONP** : if set give JSONP output, default format is json. I do not like JSONP ;)
+
 
 ## License
 
