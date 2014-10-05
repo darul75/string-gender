@@ -34,6 +34,6 @@ var most = "/^[a-z ,.'-]+$/i";
 
 var international = "/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u";           
 
-define('DIC_FILE', 'nam_dict.txt');
+define('DIC_FILE', '/nam_dict.txt');
 define('COUNTRIES', COUNTRIES);
 define('ISO_3166_MAPPING', ISO_3166_MAPPING);

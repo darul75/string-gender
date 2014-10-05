@@ -16,20 +16,21 @@
     "gender",
     "index",
     "util",
-    "nodejs"    
+    "nodejs"
   ],
-  "main": "./lib/sg",
+  "main": "./lib/index",
   "scripts": {
     "test": "mocha test/*.js"
   },
   "engines": {
     "node": ">=0.6.x"
-  },  
+  },
   "devDependencies": {
     "mocha": "",
     "grunt": "latest",
     "grunt-contrib-jshint": "latest",
-    "grunt-contrib-uglify": "latest"
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-copy": "^0.6.0"
   },
   "bugs": {
     "url": "https://github.com/darul75/string-gender/issues"

@@ -1,5 +1,5 @@
 // test/main.js
-var sg = require('../src/index.js');
+var sg = require('../lib/index.js');
 var assert = require("assert");
 
 describe('search firstname', function() {
@@ -22,13 +22,15 @@ describe('search firstname', function() {
            });
         });
 
-        it('Ai Fen', function(done) {
-           sg.getGenderByIndex({string: 'Jean-Paul'}, function(results) {
-              assert.equal(results[0].doc.name, 'jean-paul');
+        it('Abdul Hakim', function(done) {
+           sg.getGenderByIndex({string: 'Abdul Hakim'}, function(results) {
+              assert.equal(results[0].doc.name, 'abdul hakim');
 
               done();
            });
-        });      
+        });
+
+
         
     });
 

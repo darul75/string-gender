@@ -23,7 +23,7 @@ StringGender.prototype.getGenderByIndex = function (params, cb) {
   var args = arguments;  
   var email = false;
   if (!sg.ready) {
-    _readDico(function() {      
+    _readDico(function(err) {      
       StringGender.prototype.getGenderByIndex.apply(sg, args);      
       return;
     });
@@ -84,11 +84,11 @@ var _findMax = function(names) {
 };
 
 var _readDico = function (cb) {    
-  lineReader.eachLine(constants.DIC_FILE, function(line, last) {
+  lineReader.eachLine(__dirname + constants.DIC_FILE, function(line, last) {
     _digestLine.apply(sg, arguments);
   }).then(function () {
-    sg.ready = true;
-    cb();
+    sg.ready = true;    
+    cb(null);
   });
 };
 
@@ -97,8 +97,8 @@ var _digestLine = function(line, last) {
     return;    
 
   var parts = line.split(' ').filter(''.isNotEmpty);
-  var name = parts[1].toLowerCase();
-  var key = parts[0] + ' ' + name;    
+  var name = parts[1].toLowerCase().replace('+', ' ');  
+  var key = parts[0] + ' ' + name;
 
   var doc = {
     name: name.match("([^#]+)")[0],
@@ -112,9 +112,7 @@ var _digestLine = function(line, last) {
 
   // simple tab
   var item = this.dicos[name];
-  if (item) {
-
-    // console.log(name);
+  if (item) {    
 
     // put it in array
     if (_isArray(item)) {
