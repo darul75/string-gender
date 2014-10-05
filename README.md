@@ -21,21 +21,29 @@ TODO npm install string-gender
 ```javascript
 var sg = require('sg');
 
-// Example retrieve IP from request
+// non case sensitive
+
+// single firstname
+
+sg.getGenderByIndex({string: 'Jean'}, function(results) {
+
+  // array
+
+}
+
+// composite firstname
 
 sg.getGenderByIndex({string: 'Jean-Paul'}, function(results) {
 
-  /*
-  Array[1]
-  0: Object
-    doc: Object
-      countries: "       7651   4                                         $"
-      gender: "M"
-      id: "julien"
-      name: "julien"
-    key: "M julien"
-    measure: 22.965674645305885
-  */
+  // array
+
+}
+
+// with email
+
+sg.getGenderByIndex({string: 'julien.valery@github.com', email:true}, function(results) {
+
+  // array
 
 }
 
@@ -44,19 +52,47 @@ sg.getGenderByIndex({string: 'Jean-Paul'}, function(results) {
 ## Return    
 
 ~~~ json
-{
-    
-}
+[{
+  doc: {
+      countries: "       7651   4                                         $",
+      gender: "M",
+      id: "julien",
+      name: "julien"
+    },  
+    key: "M julien"
+    measure: 22.965674645305885
+}]
 ~~~
 
-Details
+*Syntax for "gender" field*
+- **M**  male first name
+- **1M** male name, if first part of name; else: mostly male name
+- **?M** mostly male name (= unisex name, which is mostly male)
+- **F** female first name> 1F <female name, if first part of name; else: mostly female name
+- **?F** mostly female name (= unisex name, which is mostly female)
+- **?**  unisex name (= can be male or female)
 
-- **ip** (Visitor IP address, or IP address specified as parameter)
+# Details
 
+- **countries**: list of countries for this name ( 1 to 13 in hexa code ) by frequency
+- **gender**: sex gender
+- **id**: document key
+- **name**: firstname
 
 ## Options
 
-- **ip** : if not set, give request ip.
+- **string** : string firstname or email
+- **email** : boolean
+
+## Reminder
+
+- [ ] demo
+- [ ] fix bugs
+- [x] search by index
+- [ ] search in json object
+- [ ] format country in results by ISO codes, do not use it right now !!! ;)
+- [ ] index regexp options for splitting
+- [ ] reformat, fix entries in dico
 
 
 ## License
