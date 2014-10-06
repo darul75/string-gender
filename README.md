@@ -1,4 +1,4 @@
-# StringGender [![NPM version](https://badge.fury.io/js/string-gender.png)](http://badge.fury.io/js/string-gender) [![Build Status](https://travis-ci.org/darul75/string-gender.png?branch=master)](https://travis-ci.org/darul75/string-gender)
+# StringGender [![NPM version](https://badge.fury.io/js/string-gender.png)](http://badge.fury.io/js/string-gender) [![Build Status](https://travis-ci.org/darul75/string-gender.png?branch=master)](https://travis-ci.org/darul75/string-gender) [![Total views](https://sourcegraph.com/api/repos/github.com/darul75/string-gender/counters/views.png)](https://sourcegraph.com/github.com/darul75/string-gender)
 
 **StringGender** nodejs library to find out the sex of a string or an email.
 
