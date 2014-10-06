@@ -59,7 +59,7 @@ sg.getGender({string: 'julien.valery@github.com', email:true}, function(results)
       id: "julien",
       name: "julien"
     },  
-    key: "M julien"
+    key: "M julien",
     measure: 22.965674645305885
 }]
 ~~~
