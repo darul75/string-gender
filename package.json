@@ -1,7 +1,7 @@
 {
   "name": "string-gender",
   "description": "Get gender from (first) name with NodeJS.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": {
     "name": "Julien Valéry",
     "email": "darul75@gmail.com"

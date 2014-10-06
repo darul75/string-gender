@@ -3,11 +3,11 @@ var sg = require('../src/index.js');
 var assert = require("assert");
 
 describe('search firstname', function() {
-    this.timeout(60000);    
+    this.timeout(70000);    
 
     describe('easy search with index', function() {
       before(function(done){        
-        setTimeout(done, 20000);
+        setTimeout(done, 28000);
       });
 
       it('Julien', function(done) {
