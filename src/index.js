@@ -18,15 +18,21 @@ function StringGender() {
   this.dicosIdx = new Indexer();
   this.dicos = {};  
 }
-      
-StringGender.prototype.getGenderByIndex = function (params, cb) {
+
+StringGender.prototype.getGender = function() {  
+  if (!sg.ready) {    
+    return [];
+  }  
+};
+
+StringGender.prototype.getGenderByIndex = function() {
+  StringGender.prototype.getGender.apply(sg, arguments);
+};
+
+var f = function (params, cb) {  
   var args = arguments;  
   var email = false;
-  if (!sg.ready) {
-    _readDico(function(err) {      
-      StringGender.prototype.getGenderByIndex.apply(sg, args);      
-      return;
-    });
+  if (!sg.ready) {    
     return;
   }      
 
@@ -161,4 +167,7 @@ if (typeof String.prototype.isNotEmpty != 'function') {
 * Export default singleton.
 */
 var sg = new StringGender();
+_readDico(function(err) {      
+  StringGender.prototype.getGender = f;  
+});
 module.exports = sg;
