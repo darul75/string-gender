@@ -25,7 +25,7 @@ var sg = require('sg');
 
 // single firstname
 
-sg.getGenderByIndex({string: 'Jean'}, function(results) {
+sg.getGender({string: 'Jean'}, function(results) {
 
   // array
 
@@ -33,7 +33,7 @@ sg.getGenderByIndex({string: 'Jean'}, function(results) {
 
 // composite firstname
 
-sg.getGenderByIndex({string: 'Jean-Paul'}, function(results) {
+sg.getGender({string: 'Jean-Paul'}, function(results) {
 
   // array
 
@@ -41,7 +41,7 @@ sg.getGenderByIndex({string: 'Jean-Paul'}, function(results) {
 
 // with email
 
-sg.getGenderByIndex({string: 'julien.valery@github.com', email:true}, function(results) {
+sg.getGender({string: 'julien.valery@github.com', email:true}, function(results) {
 
   // array
 
