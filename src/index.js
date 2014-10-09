@@ -29,7 +29,7 @@ StringGender.prototype.getGenderByIndex = function() {
   StringGender.prototype.getGender.apply(sg, arguments);
 };
 
-var f = function (params, cb) {  
+var finder = function (params, cb) {  
   var args = arguments;  
   var email = false;
   if (!sg.ready) {    
@@ -168,6 +168,6 @@ if (typeof String.prototype.isNotEmpty != 'function') {
 */
 var sg = new StringGender();
 _readDico(function(err) {      
-  StringGender.prototype.getGender = f;  
+  StringGender.prototype.getGender = finder;  
 });
 module.exports = sg;

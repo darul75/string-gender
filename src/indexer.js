@@ -1,4 +1,5 @@
 var TfIdf = require('./tfidf');
+var constants = require('./constants');
 
 function Indexer() {
     this.tfidf = new TfIdf();    
@@ -36,10 +37,47 @@ Indexer.prototype.query = function(query) {
     var resArr = [];
     for (var k in results) {
         if (results[k] > 0) {
-            resArr.push({key: k, measure: results[k], doc: this.docs[k]});
+            var doc = this.docs[k];
+            _digestCountry(doc);
+            resArr.push({key: k, measure: results[k], doc: doc});
         }
     }
     return resArr.sort(function(a, b) {
         return b.measure - a.measure;
     });
 };
+
+var _digestCountry = function(doc) {
+    var result = [];
+    for (var i=0;i<doc.countries.length; i++) {
+        if (_isNumeric(doc.countries[i])) {
+            var country = constants.COUNTRIES[i];
+            result.push({
+                name: country,
+                ISO: _getISOCode(country),
+                frequency:doc.countries[i] 
+            })
+        }
+    }
+    doc.countries = result;
+    
+};
+
+var _getISOCode = function(country) {
+    var p = constants.ISO_3166_MAPPING;
+
+    for (var key in p) {
+
+      if (p.hasOwnProperty(key)) {
+        if (p[key] === country)
+            return key;        
+      }
+    }
+    return '';
+}
+
+var _isNumeric = function(char) {
+    return !isNaN(parseInt(char, 10));
+};
+
+

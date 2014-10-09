@@ -1,5 +1,5 @@
 // test/main.js
-var sg = require('../src/index.js');
+var sg = require('../lib/index.js');
 var assert = require("assert");
 
 describe('search firstname', function() {
@@ -8,6 +8,18 @@ describe('search firstname', function() {
     describe('easy search with index', function() {
       before(function(done){        
         setTimeout(done, 28000);
+      });
+
+    
+      it('Aaron', function(done) {
+        console.log('Aaron');
+        sg.getGender({string: 'Aaron'}, function(results) {
+          console.log(results);
+          
+          assert.equal(results[0].doc.name, 'aaron');
+
+          done();
+        });
       });
 
       it('Julien', function(done) {
