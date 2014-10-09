@@ -25,7 +25,7 @@ var sg = require('sg');
 
 // single firstname
 
-sg.getGender({string: 'Jean'}, function(results) {
+sg.getGender({string: 'Aaron'}, function(results) {
 
   // array
 
@@ -49,17 +49,32 @@ sg.getGender({string: 'julien.valery@github.com', email:true}, function(results)
 
 ```    
     
-## Return    
+## Return
 
 ~~~ json
 [{
   doc: {
-      countries: "       7651   4                                         $",
+      countries: [
+      {
+        name: "great_britain"
+        ISO: "GB"
+        frequency: "2"
+      },
+      {
+        name: "ireland",
+        ISO: "IE",
+        frequency: "2"
+      },
+      {
+        name: "usa",
+        ISO: "AU",
+        frequency: "2"
+      }],
       gender: "M",
-      id: "julien",
-      name: "julien"
+      id: "aaron",
+      name: "aaron"
     },  
-    key: "M julien",
+    key: "M aaron",
     measure: 22.965674645305885
 }]
 ~~~
@@ -90,7 +105,7 @@ sg.getGender({string: 'julien.valery@github.com', email:true}, function(results)
 - [ ] fix bugs
 - [x] search by index
 - [ ] search in json object
-- [ ] format country in results by ISO codes, do not use it right now !!! ;)
+- [x] format country in results by ISO codes
 - [ ] index regexp options for splitting
 - [ ] reformat, fix entries in dico
 
