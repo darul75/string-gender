@@ -27,15 +27,11 @@ var sg = require('sg');
 
 sg.getGender({string: 'Aaron'}, function(results) {
 
-  // array
-
 }
 
 // composite firstname
 
 sg.getGender({string: 'Jean-Paul'}, function(results) {
-
-  // array
 
 }
 
@@ -43,15 +39,13 @@ sg.getGender({string: 'Jean-Paul'}, function(results) {
 
 sg.getGender({string: 'julien.valery@github.com', email:true}, function(results) {
 
-  // array
-
 }
 
 ```    
     
-## Return
+## Output
 
-~~~ json
+```json
 [{
   doc: {
       countries: [
@@ -77,7 +71,7 @@ sg.getGender({string: 'julien.valery@github.com', email:true}, function(results)
     key: "M aaron",
     measure: 22.965674645305885
 }]
-~~~
+```
 
 *Syntax for "gender" field*
 - **M**  male first name
