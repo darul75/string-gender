@@ -48,28 +48,28 @@ sg.getGender({string: 'julien.valery@github.com', email:true}, function(results)
 ```json
 [{
   doc: {
-      countries: [
-      {
-        name: "great_britain"
-        ISO: "GB"
-        frequency: "2"
-      },
-      {
-        name: "ireland",
-        ISO: "IE",
-        frequency: "2"
-      },
-      {
-        name: "usa",
-        ISO: "AU",
-        frequency: "2"
-      }],
-      gender: "M",
-      id: "aaron",
-      name: "aaron"
-    },  
-    key: "M aaron",
-    measure: 22.965674645305885
+    countries: [
+    {
+      name: "great_britain"
+      ISO: "GB"
+      frequency: "2"
+    },
+    {
+      name: "ireland",
+      ISO: "IE",
+      frequency: "2"
+    },
+    {
+      name: "usa",
+      ISO: "AU",
+      frequency: "2"
+    }],
+    gender: "M",
+    id: "aaron",
+    name: "aaron"
+  },
+  key: "M aaron",
+  measure: 22.965674645305885
 }]
 ```
 
