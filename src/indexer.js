@@ -1,19 +1,24 @@
 var TfIdf = require('./tfidf');
 var constants = require('./constants');
+var BinarySearchTree = require('binary-search-tree').BinarySearchTree;
 
 function Indexer() {
-    this.tfidf = new TfIdf();    
+    this.tfidf = new TfIdf();  
+    this.bst = new BinarySearchTree();  
     this.index = {};
     this.docs = {};
 }
 module.exports = Indexer;
 
 Indexer.prototype.addDocument = function(key, doc) {
-    this.docs[key] = doc;
+    this.docs[key] = doc;    
 
     for (var field in doc) {
-        this.tfidf.addDocument(doc[field], key + ":" + field);
+      this.tfidf.addDocument(doc[field], key + ":" + field);
     }
+
+    this.bst.insert(key, doc);
+
 };
 
 //var splitRegex = /[^\w\-_]+/g;
@@ -24,14 +29,14 @@ Indexer.prototype.query = function(query) {
     var results = {};
 
     tfidf.tfidfs(query, function(i, measure, keyAndField) {
-        keyAndField = keyAndField.split(':');
-        var key = keyAndField[0];            
-        var field = keyAndField[1]; // XXX use field if we want to add weights
-        if (!results[key]) {
-            results[key] = 0;
-        }
+      keyAndField = keyAndField.split(':');
+      var key = keyAndField[0];            
+      var field = keyAndField[1]; // XXX use field if we want to add weights
+      if (!results[key]) {
+          results[key] = 0;
+      }
 
-        results[key] += measure;
+      results[key] += measure;
     });    
 
     var resArr = [];
@@ -46,6 +51,10 @@ Indexer.prototype.query = function(query) {
         return b.measure - a.measure;
     });
 };
+
+Indexer.prototype.queryBST = function(query) {
+  this.bst.search(query);
+}
 
 var _digestCountry = function(doc) {
     var result = [];

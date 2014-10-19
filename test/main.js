@@ -10,7 +10,8 @@ describe('search firstname', function() {
         setTimeout(done, 28000);
       });
 
-    
+      // TERM FREQUENCY
+
       it('Aaron', function(done) {
         console.log('Aaron');
         sg.getGender({string: 'Aaron'}, function(results) {
@@ -48,6 +49,20 @@ describe('search firstname', function() {
           done();
         });
       });
+
+      // BST
+
+      /*
+      it('Julien', function(done) {
+        console.log('Julien');
+        sg.getGender({string: 'Julien', binarySearch: true}, function(results) {
+
+          console.log(results)
+          assert.equal(results[0].doc.name, 'julien');
+
+          done();
+        });
+      });*/
         
     });
 

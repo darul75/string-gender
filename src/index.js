@@ -32,6 +32,8 @@ StringGender.prototype.getGenderByIndex = function() {
 var finder = function (params, cb) {  
   var args = arguments;  
   var email = false;
+  var binarySearch = false;
+
   if (!sg.ready) {    
     return;
   }      
@@ -40,6 +42,7 @@ var finder = function (params, cb) {
     return;
 
   email = params.email;
+  binarySearch = params.binarySearch;
 
   var name = params.string.toLowerCase();
 
@@ -58,9 +61,9 @@ var finder = function (params, cb) {
 
   var idx = constants.COUNTRIES.indexOf(params.country) || constants.ISO_3166_MAPPING.indexOf(params.country);
 
-  var results = this.dicosIdx.query(name); 
+  var results = !binarySearch ? this.dicosIdx.query(name) : this.dicosIdx.queryBST(name); 
   if (email && (!results || results.length === 0)) {
-    results = this.dicosIdx.query(name2); 
+    results = !binarySearch ? this.dicosIdx.query(name2) : this.dicosIdx.queryBST(name2);    
   }
 
   // case : search for country 
