@@ -4,7 +4,7 @@ var BinarySearchTree = require('binary-search-tree').BinarySearchTree;
 
 function Indexer() {
     this.tfidf = new TfIdf();  
-    this.bst = new BinarySearchTree();  
+    this.bst = new BinarySearchTree();    
     this.index = {};
     this.docs = {};
 }
@@ -17,7 +17,7 @@ Indexer.prototype.addDocument = function(key, doc) {
       this.tfidf.addDocument(doc[field], key + ":" + field);
     }
 
-    this.bst.insert(key, doc);
+    this.bst.insert(doc.id, doc);
 
 };
 
@@ -53,7 +53,14 @@ Indexer.prototype.query = function(query) {
 };
 
 Indexer.prototype.queryBST = function(query) {
-  this.bst.search(query);
+  var results = this.bst.search(query).map(function(result) {
+    return {
+      doc: result,
+      key: result.id,
+      measure: 1.0
+    };
+  });
+  return results;
 }
 
 var _digestCountry = function(doc) {

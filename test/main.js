@@ -1,13 +1,17 @@
 // test/main.js
-var sg = require('../lib/index.js');
+var sg = require('../src/index.js');
 var assert = require("assert");
 
 describe('search firstname', function() {
-    this.timeout(70000);    
+    this.timeout(150000);    
+
+    before(function(done){        
+        setTimeout(done, 50000);
+    });
 
     describe('easy search with index', function() {
       before(function(done){        
-        setTimeout(done, 28000);
+        setTimeout(done, 50000);
       });
 
       // TERM FREQUENCY
@@ -52,9 +56,9 @@ describe('search firstname', function() {
 
       // BST
 
-      /*
-      it('Julien', function(done) {
-        console.log('Julien');
+      
+      it('Julien BST', function(done) {
+        console.log('Julien BST');
         sg.getGender({string: 'Julien', binarySearch: true}, function(results) {
 
           console.log(results)
@@ -62,7 +66,7 @@ describe('search firstname', function() {
 
           done();
         });
-      });*/
+      });
         
     });
 
