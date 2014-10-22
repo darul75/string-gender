@@ -96,9 +96,8 @@ sg.getGender({string: 'julien.valery@github.com', email:true}, function(results)
 ## Reminder
 
 - [ ] demo
-- [ ] fix bugs
 - [x] search by index
-- [ ] search in json object
+- [x] search by binary tree
 - [x] format country in results by ISO codes
 - [ ] index regexp options for splitting
 - [ ] reformat, fix entries in dico
