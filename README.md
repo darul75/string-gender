@@ -101,13 +101,16 @@ sg.getGender({string: 'julien.valery@github.com', email:true}, function(results)
 - [x] format country in results by ISO codes
 - [ ] index regexp options for splitting
 - [ ] reformat, fix entries in dico
+- 
+## Metrics
 
+[![NPM](https://nodei.co/npm/string-gender.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/string-gender/)
 
 ## License
 
 The MIT License (MIT)
 
-Copyright (c) 2013 Julien Valéry
+Copyright (c) 2014 Julien Valéry
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
