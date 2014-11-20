@@ -13,7 +13,7 @@ TODO http://darul-demo.herokuapp.com/string-gender
 ## Install
 
 ~~~
-TODO npm install string-gender
+npm install string-gender
 ~~~
 
 ## Usage
